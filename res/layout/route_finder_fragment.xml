@@ -1,0 +1,86 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/routeID"
+    tools:context=".RouteFinderFragment" >
+
+    <LinearLayout
+        android:id="@+id/verticalLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/inputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="0dp"
+            android:paddingTop="0dp" >
+
+            <AutoCompleteTextView
+                android:id="@+id/startAddressSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/startAddress"
+                android:inputType="textPostalAddress"
+                android:paddingBottom="0dp"
+                android:paddingTop="0dp" >
+
+                <requestFocus />
+            </AutoCompleteTextView>
+        </LinearLayout>
+        
+        <LinearLayout
+            android:id="@+id/inputLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="0dp"
+            android:paddingTop="0dp" >
+
+            <AutoCompleteTextView
+                android:id="@+id/endAddressSearch"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="@string/endAddress"
+                android:inputType="textPostalAddress"
+                android:paddingBottom="0dp"
+                android:paddingTop="0dp" >
+
+                <requestFocus />
+            </AutoCompleteTextView>
+
+            <Button
+                android:id="@+id/findEndButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="12dp"
+                android:text="@string/findString"
+                android:paddingBottom="0dp"
+                android:paddingTop="0dp" />
+
+        </LinearLayout>
+
+        <fragment
+            android:id="@+id/routeFinder"
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="2"
+            class="com.google.android.gms.maps.SupportMapFragment" />
+
+        <ListView
+            android:id="@+id/routeListView"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_weight="0.00"
+            android:gravity="" >
+
+        </ListView>
+    </LinearLayout>
+
+</RelativeLayout>

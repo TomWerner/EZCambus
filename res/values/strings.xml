@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">EZCambus</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+    <string name="incomingTimes">Incoming \n Times</string>
+    <string name="saveStop">Save \n Stop</string>
+    <string name="startAddress">Start address</string>
+    <string name="endAddress">End address</string>
+    <string name="findString">Find</string>
+    <string name="crashDialogText">"Sorry about this crash. A bug report will be uploaded if you press OK."</string>
+    <string name="crashDialogTitle">Oops!</string>
+    <string name="crash_dialog_comment_prompt">Details on what you were doing at the time of the crash are always appreciated, but not necessary. Email comments/questions to tom-werner@uiowa.edu</string>
+    <string name="crash_dialog_ok_toast">Thanks!</string>
+    
+    <string-array name="university_places">
+        <item>Adler Journalism and Mass Communication Building</item>
+        <item>Afro-American Cultural Center</item>
+        <item>Art Building</item>
+        <item>Art Building West</item>
+        <item>Asian Pacific-American Cultural Center</item>
+        <item>Banks Field</item>
+        <item>Becker Communication Studies Building</item>
+        <item>Beckwith Boathouse</item>
+        <item>Bedell Entrepreneurship Learning Lab</item>
+        <item>BioVentures Center</item>
+        <item>Biology Building</item>
+        <item>Biology Building East</item>
+        <item>Blank Honors Center</item>
+        <item>Bowen Science Building</item>
+        <item>Bowman House</item>
+        <item>Boyd Law Building</item>
+        <item>Boyd Tower</item>
+        <item>Burge Hall</item>
+        <item>Calvin Hall</item>
+        <item>Cambus Maintenance Facility</item>
+        <item>Cambus Offices</item>
+        <item>Campus Recreation and Wellness Center</item>
+        <item>Carver Biomedical Research Building</item>
+        <item>Carver River Research and Education Facility</item>
+        <item>Carver-Hawkeye Arena</item>
+        <item>Center for Disabilities and Development</item>
+        <item>Chemistry Building</item>
+        <item>Chilled Water Plant 1</item>
+        <item>Chilled Water Plant 2 (West)</item>
+        <item>Clinton Street Building</item>
+        <item>Clinton Street Music 375</item>
+        <item>Clinton Street Music 376</item>
+        <item>College of Medicine Administration Building</item>
+        <item>College of Nursing Building</item>
+        <item>College of Public Health Building</item>
+        <item>Communications Center</item>
+        <item>Continuing Education Facility</item>
+        <item>Coral Center</item>
+        <item>Corridor Technology Center</item>
+        <item>Currier Hall</item>
+        <item>Danforth Chapel</item>
+        <item>Daum Hall</item>
+        <item>Dental Science Building</item>
+        <item>Dey House</item>
+        <item>Eckstein Medical Research Building</item>
+        <item>Emergency Power Facility 1</item>
+        <item>Engineering Research Facility</item>
+        <item>English-Philosophy Building</item>
+        <item>Environmental Health and Safety Office</item>
+        <item>Environmental Health and Safety Office 2</item>
+        <item>Environmental Health and Safety Office 3</item>
+        <item>Environmental Health and Safety Office 4</item>
+        <item>Environmental Management Facility</item>
+        <item>Family Medical Center – Hawkeye Campus</item>
+        <item>Field Hockey Event Management Box</item>
+        <item>Field Hockey Grandstand</item>
+        <item>Field House</item>
+        <item>Finkbine Golf Club House</item>
+        <item>Finkbine Shop Facility</item>
+        <item>Fleet Services</item>
+        <item>General Hospital</item>
+        <item>Gerdin Athletic Learning Center</item>
+        <item>Gilbert Street Building</item>
+        <item>Gilmore Hall</item>
+        <item>Glenn Schaeffer Library</item>
+        <item>Graduate Painting Studios and Faculty Office</item>
+        <item>Halsey Hall</item>
+        <item>Hancher Auditorium</item>
+        <item>Hancher Box Office</item>
+        <item>Hardin Library for Health Sciences</item>
+        <item>Hawkeye Court Apartments</item>
+        <item>Hawkeye Drive Apartments</item>
+        <item>Hawkeye Recreation Service Building</item>
+        <item>Hawkeye Tennis and Recreation Complex</item>
+        <item>Hawks Ridge</item>
+        <item>Helicopter Hanger</item>
+        <item>Hillcrest</item>
+        <item>Hope Lodge</item>
+        <item>Hospital Ramp 1</item>
+        <item>Hospital Ramp 2</item>
+        <item>Hospital Ramp 3</item>
+        <item>Housing Services Building</item>
+        <item>Hydraulics Annex 1</item>
+        <item>Hydraulics Annex 2</item>
+        <item>Hydraulics East Annex</item>
+        <item>Hydraulics Model Annex</item>
+        <item>Hydraulics Research Lab</item>
+        <item>Hydraulics Wind Tunnel Annex</item>
+        <item>IIHR—Hydroscience Engineering</item>
+        <item>IMU Parking Ramp</item>
+        <item>Indoor Practice Facility (Bubble)</item>
+        <item>Institute for Rural and Environmental Health</item>
+        <item>Institute of Public Affairs</item>
+        <item>Iowa Advanced Technology Labs</item>
+        <item>Iowa Eye Bank</item>
+        <item>Iowa Geological Survey-Oakdale</item>
+        <item>Iowa House</item>
+        <item>Iowa Kidsight</item>
+        <item>Iowa Memorial Union</item>
+        <item>Iowa Nonprofit Resource Center</item>
+        <item>J Pappajohn Pavilion</item>
+        <item>J W Colloton Pavilion</item>
+        <item>Jacobson Athletic Building</item>
+        <item>Jefferson Building</item>
+        <item>Jessup Hall</item>
+        <item>Karro Athletic Hall of Fame</item>
+        <item>Kinnick Stadium</item>
+        <item>Kuhl House</item>
+        <item>Lagoon Shelter House</item>
+        <item>Lakeside Laboratory</item>
+        <item>Landscape Services Complex</item>
+        <item>Latino/Native American Cultural Center</item>
+        <item>Laundry</item>
+        <item>Law Admissions Building</item>
+        <item>Law, Health Policy, Disability Center</item>
+        <item>Lesbian, Gay, Bisexual, Transgender Resource Center</item>
+        <item>Levitt Center for University Advancement</item>
+        <item>Liberty Square</item>
+        <item>Library, Main</item>
+        <item>Lindquist Center</item>
+        <item>Linn Street Music</item>
+        <item>Linn Street Place</item>
+        <item>MacLean Hall</item>
+        <item>Macbride Hall</item>
+        <item>Madison Street Services Building</item>
+        <item>Market-Dubuque Building</item>
+        <item>Mayflower Hall</item>
+        <item>Medical Education Building</item>
+        <item>Medical Education and Research Facility</item>
+        <item>Medical Laboratories</item>
+        <item>Medical Research Center</item>
+        <item>Medical Research Facility</item>
+        <item>Melrose Avenue Parking Facility</item>
+        <item>Mossman Business Services Building</item>
+        <item>Multi-Tenant Facility</item>
+        <item>Music West - Interim Building</item>
+        <item>National Advanced Driving Simulator</item>
+        <item>Newton Road Ramp</item>
+        <item>North Campus Parking and Chilled Water Facility</item>
+        <item>North Hall</item>
+        <item>Oakdale Research Building</item>
+        <item>Oakdale Systems</item>
+        <item>Old Capitol</item>
+        <item>Orthopaedics and Sports Medicine Clinic</item>
+        <item>Pappajohn Biomedical Discovery Building</item>
+        <item>Pappajohn Business Building</item>
+        <item>Pappajohn Education Center</item>
+        <item>Parklawn</item>
+        <item>Pearl Softball Field</item>
+        <item>Pharmacy Building</item>
+        <item>Phillips Hall</item>
+        <item>Physiology Research Laboratory</item>
+        <item>Plaza Centre One</item>
+        <item>Pomerantz Center</item>
+        <item>Pomerantz Family Pavilion</item>
+        <item>Power Plant</item>
+        <item>President\'s Residence</item>
+        <item>Public Library Training Facility</item>
+        <item>Public Safety</item>
+        <item>Quadrangle</item>
+        <item>R J Carver Pavilion</item>
+        <item>Recreation Building</item>
+        <item>Rienow Hall</item>
+        <item>Ronald McDonald House</item>
+        <item>Saint Thomas More</item>
+        <item>Sand Road Services Building</item>
+        <item>Sanitary Engineering Lab</item>
+        <item>Schaeffer Hall</item>
+        <item>School of Music Replacement Facility</item>
+        <item>Sciences Library</item>
+        <item>Seamans Center</item>
+        <item>Seashore Hall</item>
+        <item>Shambaugh House</item>
+        <item>Shipping and Recieving Facility</item>
+        <item>Slater Hall</item>
+        <item>South Capitol Services Building</item>
+        <item>South Quadrangle</item>
+        <item>South Wing</item>
+        <item>Speech and Hearing Center</item>
+        <item>Spence Laboratories of Psychology</item>
+        <item>Stanley Hall</item>
+        <item>Stanley Hydraulics Laboratory</item>
+        <item>State Historical Society Building</item>
+        <item>State Hygienic Laboratory - Ankeny</item>
+        <item>State Hygienic Laboratory - Iowa City</item>
+        <item>Studio Arts</item>
+        <item>Stuit Hall</item>
+        <item>Technology Innovation Center</item>
+        <item>Temporary Arts Facilities</item>
+        <item>Theatre Building</item>
+        <item>Trowbridge Hall</item>
+        <item>UI QuickCare – Southwest Iowa City</item>
+        <item>UI Research Park Animal Quarters A</item>
+        <item>UI Research Park Power Plant Substation</item>
+        <item>UI Research Park Research Building</item>
+        <item>UI Research Park Research Facilities</item>
+        <item>UI Research Park Studio A</item>
+        <item>UI Research Park Waste Storage Facility</item>
+        <item>University Athletic Club</item>
+        <item>University Book Store</item>
+        <item>University Capitol Centre</item>
+        <item>University Services Building</item>
+        <item>Van Allen Hall</item>
+        <item>Veteran\'s Affairs Medical Center</item>
+        <item>Voxman Music Building</item>
+        <item>Waste Incineration Plant</item>
+        <item>Water Plant</item>
+        <item>Westlawn</item>
+        <item>Women\'s Resource and Action Center</item>
+    </string-array>
+
+</resources>
