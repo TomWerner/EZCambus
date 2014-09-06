@@ -1,0 +1,6 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:id="@+id/action_set_walking_distance"
+          android:icon="@drawable/ic_action_walking_clipart"
+          android:title="Set Walking Distance"
+          android:showAsAction="ifRoom" />
+</menu>
