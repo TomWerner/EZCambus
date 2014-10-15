@@ -1,6 +1,7 @@
 package com.wernerapps.ezbongo.bll;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
@@ -39,7 +40,7 @@ public class GeocodingManager
             address = AddressSearchHelper.getCampusPlaces().get(address);
         }
 
-        List<Address> results = null;
+        List<Address> results = new ArrayList<Address>();
         try
         {
             results = geocoder.getFromLocationName(address, maxResults);
@@ -58,7 +59,7 @@ public class GeocodingManager
         }
         catch (IOException e)
         {
-            e.printStackTrace();
+            return null;
         }
         return results;
     }

@@ -8,8 +8,6 @@ import org.json.JSONObject;
 
 import android.util.SparseArray;
 
-import com.google.android.gms.drive.internal.OnDownloadProgressResponse;
-import com.wernerapps.ezbongo.api.APIManager.OnStopListingDownloaded;
 import com.wernerapps.ezbongo.bll.Route;
 import com.wernerapps.ezbongo.bll.Stop;
 
@@ -24,9 +22,9 @@ public class APIManager
     private String apiKey;
 
     private SparseArray<Stop> stopListing = new SparseArray<Stop>();
-    private boolean downloadingStopListing;
     
     private ArrayList<OnStopListingDownloaded> stopListingListeners = new ArrayList<APIManager.OnStopListingDownloaded>();
+    private ArrayList<OnStopInfoDownloaded> stopInfoListeners = new ArrayList<APIManager.OnStopInfoDownloaded>();
 
     public static APIManager getInstance()
     {
@@ -70,36 +68,23 @@ public class APIManager
 
     public void requestStopListing()
     {
-        if (stopListing.size() == 0 && !downloadingStopListing)
+        if (stopListing.size() == 0)
         {
             String url = String.format(STOP_LISTING_URL, apiKey);
-    
-            // Handle how the data should be received
-            OnNetworkRequestCompletedListener listener = new OnNetworkRequestCompletedListener()
+            new NetworkCall(url)
             {
                 @Override
-                public void networkRequestComplete(JSONObject networkResult)
+                public void parseJSONResults(JSONObject networkCallResult)
                 {
-                    parseStopListing(networkResult);
+                    parseStopListing(networkCallResult);
+                    notifyStopListingSubscribers();
                 }
             };
-    
-            // Start the request
-            new GenericNetworkAsyncTask(listener).execute(url);
-            downloadingStopListing = true;
         }
         else
         {
             notifyStopListingSubscribers();
         }
-    }
-
-    private void notifyStopListingSubscribers()
-    {
-        downloadingStopListing = false;
-        for (OnStopListingDownloaded listener : stopListingListeners)
-            listener.stopListingDownloaded(stopListing);
-        stopListingListeners = new ArrayList<APIManager.OnStopListingDownloaded>();
     }
 
     protected void parseStopListing(JSONObject networkResult)
@@ -118,7 +103,6 @@ public class APIManager
                     // Add the stop to our list
                     stopListing.append(stop.getInt("stopnumber"), newStop);
                 }
-                notifyStopListingSubscribers();
             }
         }
         catch (JSONException e)
@@ -127,43 +111,55 @@ public class APIManager
         }
     }
 
-    public Stop getStopInfo(int stopID)
-    {
-        Stop stop = stopListing.get(stopID);
-        if (stop == null)
+    public void requestStopInfo(final int stopID)
+    {        
+        String url = String.format(STOP_INFO_URL, stopID, apiKey);
+        new NetworkCall(url)
         {
-            // TODO: ERROR
-            return null;
-        }
-        // TODO: Use listeners
+            @Override
+            public void parseJSONResults(JSONObject networkCallResult)
+            {
+                parseStopInfo(stopID, networkCallResult);
+            }
+        };
+    }
+    
+    protected void parseStopInfo(int stopID, JSONObject networkResult)
+    {
         try
         {
-            JSONObject data = null;// readJsonFromUrl(String.format(STOP_INFO_URL,
-                                   // apiKey));
-
-            if (isDataValid(data))
+            if (isDataValid(networkResult))
             {
-                JSONObject stopinfo = data.getJSONObject("stopinfo");
-                JSONArray routes = data.getJSONArray("routes");
+                Stop stop = stopListing.get(stopID);
+                JSONObject stopinfo = networkResult.getJSONObject("stopinfo");
+                System.out.println(stopinfo.toString(1));
+                JSONArray routes = stopinfo.getJSONArray("routes");
                 ArrayList<Route> servicingRoutes = new ArrayList<Route>();
-
+    
                 for (int i = 0; i < routes.length(); i++)
                 {
-                    JSONObject route = routes.getJSONObject(i).getJSONObject("route");
-                    servicingRoutes.add(new Route(route.getString("name"), route.getString("tag"), route.getString("agency")));
+                    JSONObject route = routes.getJSONObject(i);
+                    servicingRoutes.add(new Route(route.getString("title"), route.getString("tag"), route.getString("agency")));
                 }
-
-                stop.updateInformation(stopinfo.getInt("stopnumber"), stopinfo.getString("stoptitle"), stopinfo.getDouble("stoplat"),
-                        stopinfo.getDouble("stoplng"), servicingRoutes);
+    
+                stop.updateInformation(stopinfo.getInt("stopid"), stopinfo.getString("stoptitle"), stopinfo.getDouble("latitude"),
+                        stopinfo.getDouble("longitude"), servicingRoutes);
+                notifyStopInfoSubscribers(stop);
             }
         }
         catch (JSONException e)
         {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        
+    }
 
-        return stop;
+    private void notifyStopInfoSubscribers(Stop stop)
+    {
+        for (OnStopInfoDownloaded listener : stopInfoListeners)
+        {
+            listener.stopInfoDownloaded(stop);
+        }
     }
 
     public JSONObject getRouteInfo(String agency, String routeTag)
@@ -185,9 +181,13 @@ public class APIManager
         return true;
     }
 
-    public interface OnNetworkRequestCompletedListener
+    
+    private void notifyStopListingSubscribers()
     {
-        public void networkRequestComplete(JSONObject networkResult);
+        for (OnStopListingDownloaded listener : stopListingListeners)
+        {
+            listener.stopListingDownloaded(stopListing);
+        }
     }
 
     public interface OnStopListingDownloaded
@@ -198,5 +198,15 @@ public class APIManager
     public void addStopListingListener(OnStopListingDownloaded onStopListingDownloaded)
     {
         stopListingListeners.add(onStopListingDownloaded);
+    }
+    
+    public interface OnStopInfoDownloaded
+    {
+        public void stopInfoDownloaded(Stop stop);
+    }
+
+    public void addStopInfoListener(OnStopInfoDownloaded onStopInfoDownloaded)
+    {
+        stopInfoListeners.add(onStopInfoDownloaded);
     }
 }

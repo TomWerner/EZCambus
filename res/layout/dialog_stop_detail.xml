@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/stopTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="## - Stop Name"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+	
+    <View
+	    android:layout_width="fill_parent"
+	    android:layout_height="1dp"
+	    android:background="@android:color/darker_gray"
+        android:layout_margin="10dp"/>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+        <LinearLayout
+			android:layout_width="0dp"
+			android:layout_weight="3"
+	        android:layout_height="wrap_content"
+	        android:orientation="vertical" >
+			<LinearLayout
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:orientation="horizontal" >
+		        
+		        <TextView
+		            android:id="@+id/textEditPlanTrip"
+		            android:layout_width="wrap_content"
+		            android:layout_height="fill_parent"
+		            android:gravity="center_vertical|center_horizontal"
+		            android:text="Plan Trip"
+		        	android:layout_marginLeft="10dp"
+		            android:layout_marginRight="10dp"
+		            android:textAppearance="?android:attr/textAppearanceMedium" />
+		
+		        <Button
+		            android:id="@+id/btnPlanTo"
+		            style="?android:attr/buttonStyleSmall"
+					android:layout_width="0dp"
+					android:layout_weight="1"
+					android:minHeight="0dp"
+		            android:layout_height="wrap_content"
+		            android:text="To"
+		           	android:background="@drawable/custom_button_selector"
+		            android:layout_margin="10dp" />
+
+		        <Button
+		            android:id="@+id/btnPlanFrom"
+		            style="?android:attr/buttonStyleSmall"
+		            android:layout_width="0dp"
+		            android:layout_height="wrap_content"
+					android:minHeight="0dp"
+		            android:layout_weight="1"
+		            android:background="@drawable/custom_button_selector"
+		            android:text="From" 
+		            android:layout_margin="10dp"/>
+	        </LinearLayout>
+		</LinearLayout>
+    </LinearLayout>
+    
+    <View
+	    android:layout_width="fill_parent"
+	    android:layout_height="1dp"
+	    android:background="@android:color/darker_gray"
+        android:layout_margin="10dp"/>
+	
+    <TextView
+	    android:id="@+id/textEditRoutes"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:gravity="center_vertical|center_horizontal"
+	    android:text="Servicing Routes"
+		android:layout_marginLeft="10dp"
+	    android:layout_marginRight="10dp"
+	    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <ListView
+        android:id="@+id/listViewServicesRoutes"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_weight="1"
+        android:layout_margin="5dp" >
+    </ListView>
+  	
+  	<Button
+    	android:id="@+id/btnCancelStopDetail"
+       	style="?android:attr/buttonStyleSmall"
+		android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        android:background="@drawable/custom_button_selector"
+        android:layout_margin="10dp"
+        android:layout_marginTop="0dp" />
+    
+    
+    
+    
+
+</LinearLayout>

@@ -23,9 +23,12 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.wernerapps.ezbongo.R;
 import com.wernerapps.ezbongo.api.APIManager;
+import com.wernerapps.ezbongo.api.APIManager.OnStopInfoDownloaded;
 import com.wernerapps.ezbongo.bll.AddressSearchHelper;
 import com.wernerapps.ezbongo.bll.DistanceCalculator;
 import com.wernerapps.ezbongo.bll.GeocodingManager;
@@ -67,6 +70,24 @@ public class StopFinderFragment extends Fragment
             public void run()
             {
                 GoogleMapManager.getInstance().setMap(getActivity(), mapFragment.getMap(), mapFragment);
+                GoogleMapManager.getInstance().getMap().setOnInfoWindowClickListener(new OnInfoWindowClickListener()
+                {
+                    @Override
+                    public void onInfoWindowClick(Marker arg0)
+                    {
+                        int stopNum = Integer.parseInt(arg0.getSnippet().substring(arg0.getSnippet().indexOf(": ") + 2));
+                        
+                        APIManager.getInstance().addStopInfoListener(new OnStopInfoDownloaded()
+                        {
+                            @Override
+                            public void stopInfoDownloaded(Stop stop)
+                            {
+                                ((MainActivity)getActivity()).showDialog(new StopDetailDialog(stop));
+                            }
+                        });
+                        APIManager.getInstance().requestStopInfo(stopNum);
+                    }
+                });
             }
         });
 
@@ -102,7 +123,11 @@ public class StopFinderFragment extends Fragment
             GeocodingManager.getInstance().setState("IOWA", "IA");
             GeocodingManager.getInstance().setMaxResult(20);
             List<Address> results = GeocodingManager.getInstance().searchForAddress(getActivity(), query);
-            if (results == null || results.size() == 0)
+            if (results == null)
+            {
+                displayErrorDialog("No internet connection - check your connection");
+            }
+            else if (results.size() == 0)
             {
                 displayErrorDialog("No results in Iowa - try to be more specific");
             }
@@ -138,7 +163,7 @@ public class StopFinderFragment extends Fragment
     {
         GoogleMapManager.getInstance().setUserLocation(address);
         GoogleMapManager.getInstance().clearStopMarkers();
-        
+
         APIManager.getInstance().addStopListingListener(new APIManager.OnStopListingDownloaded()
         {
             @Override

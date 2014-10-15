@@ -11,10 +11,10 @@ import java.nio.charset.Charset;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.wernerapps.ezbongo.api.APIManager.OnNetworkRequestCompletedListener;
-
 import android.os.AsyncTask;
 import android.util.Log;
+
+import com.wernerapps.ezbongo.api.NetworkCall.OnNetworkRequestCompletedListener;
 
 public class GenericNetworkAsyncTask extends AsyncTask<String, String, JSONObject>
 {
